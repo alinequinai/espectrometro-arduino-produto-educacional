@@ -1,0 +1,74 @@
+LEIA-ME – Espectrômetro AS7341
+
+Este conjunto de arquivos integra o Produto Educacional desenvolvido no âmbito da pesquisa de mestrado intitulada “Nucleossíntese estelar e espectroscopia com Arduino: inovação curricular no ensino de Química no Ensino Médio paulista”, de autoria de Aline Silva Santos Quinai.
+
+O aplicativo foi desenvolvido para receber, organizar e representar graficamente os dados obtidos pelo sensor multiespectral AS7341 conectado ao Arduino Uno.
+
+Arquivos disponíveis
+
+Espectrometro_AS7341.py – código-fonte principal do aplicativo desenvolvido em Python;
+
+Espectrometro_AS7341.spec – arquivo de configuração utilizado para geração do executável;
+
+atom_purple.ico – ícone utilizado no aplicativo e no executável;
+
+atom_purple.png – imagem utilizada na interface;
+
+CRIAR_EXE.bat – arquivo em lote utilizado para geração do executável no Windows.
+
+Funcionamento do aplicativo
+
+O aplicativo recebe os dados transmitidos pelo Arduino por comunicação serial a 115200 baud e interpreta as leituras correspondentes aos oito canais espectrais do sensor AS7341.
+
+O programa aceita dados no formato CSV, por exemplo:
+
+24,60,85,110,92,74,51,30
+
+Também é compatível com o formato diagnóstico:
+
+F1=24 F2=60 F3=85 F4=110 F5=92 F6=74 F7=51 F8=30
+
+Os valores são associados às regiões espectrais centradas aproximadamente em 415, 445, 480, 515, 555, 590, 630 e 680 nm.
+
+Correção do sinal de escuro
+
+Antes da realização das medições, recomenda-se executar a correção do sinal de escuro com o sensor completamente coberto.
+
+Ao iniciar esse procedimento, o aplicativo aguarda a obtenção de 20 leituras válidas. A média obtida para cada canal é utilizada como referência e posteriormente subtraída das novas leituras.
+
+Caso os dados deixem de ser recebidos durante o procedimento, o aplicativo apresenta avisos periódicos. O processo pode ser interrompido pelo botão Parar.
+
+Visualização dos dados
+
+Após a correção do sinal de escuro, o aplicativo permite visualizar as respostas espectrais dos oito canais por meio de diferentes formas de representação gráfica.
+
+Os valores também podem ser normalizados em relação ao maior sinal obtido em cada leitura, permitindo destacar a distribuição relativa da resposta espectral entre os canais.
+
+A interpolação apresentada na visualização gráfica possui finalidade exclusivamente didática e não representa uma medição contínua do espectro.
+
+Geração do executável no Windows
+
+Para gerar o arquivo executável:
+
+mantenha todos os arquivos deste pacote na mesma pasta;
+
+execute o arquivo CRIAR_EXE.bat;
+
+aguarde a conclusão do processo;
+
+abra a pasta dist;
+
+utilize o arquivo Espectrometro_AS7341.exe.
+
+O executável permite utilizar o aplicativo em computadores com Windows sem a necessidade de executar diretamente o arquivo Python.
+
+Versão
+
+Versão 4.
+
+Nesta versão, o procedimento de correção do sinal de escuro aguarda a obtenção de 20 amostras válidas antes de concluir o cálculo, evitando a utilização de médias parciais.
+
+Autoria
+
+Aline Silva Santos Quinai
+Produto Educacional desenvolvido no âmbito do Mestrado Profissional em Química em Rede Nacional – PROFQUI.
